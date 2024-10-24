@@ -6,3 +6,5 @@ class SporcuAdmin(admin.ModelAdmin):
     search_fields = ['ad', 'soyad']
 
 admin.site.register(Sporcu, SporcuAdmin)
+
+#gün
