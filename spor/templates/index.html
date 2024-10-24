@@ -1,16 +1,46 @@
 {% extends "base.html" %}
 
-
-
 {% block title %}
 Ana Sayfa
 {% endblock %}
 
-
 {% block icerik %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center" style="color: #ffab40;">Soru Sor</h5> <!-- Orange color -->
+                    <div id="chatbox" class="border p-3" style="height: 300px; overflow-y: auto; background-color: #1e1e1e; color: #e0e0e0;">
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <input type="text" id="user-input" class="form-control mt-3" placeholder="Buraya yazın..." style="background-color: #333; color: #fff;" />
+                    <button id="send-btn" class="btn" style="background-color: #ff7f50; color: #fff; border: none; margin-top: 10px;">Gönder</button> <!-- More vibrant orange -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script>
+    const sendButton = document.getElementById('send-btn');
+    const chatbox = document.getElementById('chatbox');
+    const userInput = document.getElementById('user-input');
 
-asdasdasasd
+    sendButton.addEventListener('click', function() {
+        const userMessage = userInput.value;
+        if (userMessage.trim() === '') return;
 
+        // Display user message
+        chatbox.innerHTML += `<div style="color: #ffab40;"><strong>Ben:</strong> ${userMessage}</div>`; // Orange color for user messages
+        userInput.value = '';
+
+        // Simulate a bot response (replace this with actual chatbot logic)
+        setTimeout(() => {
+            chatbox.innerHTML += `<div><strong>Bot:</strong> Bu bir örnek cevap.</div>`;
+            chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll to the bottom
+        }, 1000);
+    });
+</script>
 
 {% endblock %}

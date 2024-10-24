@@ -1,91 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>{% block title %}Page Title{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BODY AI{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            transition: background-color 0.5s, color 0.5s; /* Smooth transition */
+            min-height: 100vh; /* Ensure body takes full height */
+            display: flex;
+            flex-direction: column; /* Flex layout for footer placement */
+        }
+        .navbar {
+            background-color: #1f1f1f; /* Dark navbar */
+        }
+        .navbar-brand, .nav-link {
+            color: #FFA500 !important; /* More vibrant orange for navbar */
+        }
+        .card {
+            background-color: #1e1e1e; /* Dark card background */
+            border: none; /* Remove card border */
+            transition: background-color 0.5s; /* Smooth transition */
+        }
+        .card:hover {
+            background-color: #2c2c2c; /* Lighter background on hover */
+        }
+        footer {
+            background-color: #1f1f1f; /* Dark footer */
+            color: #FFA500; /* Bright orange for footer text */
+            font-size: 0.9em; /* Smaller font size */
+            margin-top: auto; /* Footer stays at bottom of content */
+            padding: 10px 0; /* Padding for spacing */
+        }
+        h1, h2, h5 {
+            color: #FFA500; /* More vibrant orange for headings */
+        }
+        /* Custom styles for smooth transitions */
+        .transition {
+            transition: all 0.5s ease; /* Smooth transition for all elements */
+        }
+    </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Proje Adı</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Fitness Programı</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Daha Fazla
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Eylem</a></li>
-                        <li><a class="dropdown-item" href="#">Başka bir eylem</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Burada başka bir şey</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Devre Dışı</a>
-                </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Ara" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Ara</button>
-            </form>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/">BODY AI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto"> <!-- Added ml-auto to push the items to the right -->
+            <li class="nav-item">
+                <a class="nav-link" href="/hakkimizda/">Hakkımızda</a>
+            </li>
+        </ul>
     </div>
 </nav>
 
-<main style="min-height: 600px;">
-    {% block icerik %}{% endblock %}
-</main>
+<div class="container transition flex-grow-1">
+    {% block icerik %}
+    {% endblock %}
+</div>
 
-<footer>
-    <div class="container-fluid bg-dark">
-        <div class="row p-5 text-white">
-            <div class="col-md-3">
-                <h4>Footer 1</h4>
-                <div><a class="text-white" href="#">Menü 1</a></div>
-                <div><a class="text-white" href="#">Menü 2</a></div>
-                <div><a class="text-white" href="#">Menü 3</a></div>
-                <div><a class="text-white" href="#">Menü 4</a></div>
-            </div>
-            <div class="col-md-3">
-                <h4>Footer 2</h4>
-                <div><a class="text-white" href="#">Menü 1</a></div>
-                <div><a class="text-white" href="#">Menü 2</a></div>
-                <div><a class="text-white" href="#">Menü 3</a></div>
-                <div><a class="text-white" href="#">Menü 4</a></div>
-            </div>
-            <div class="col-md-3">
-                <h4>Footer 3</h4>
-                <div><a class="text-white" href="#">Menü 1</a></div>
-                <div><a class="text-white" href="#">Menü 2</a></div>
-                <div><a class="text-white" href="#">Menü 3</a></div>
-                <div><a class="text-white" href="#">Menü 4</a></div>
-            </div>
-            <div class="col-md-3">
-                <h4>Footer 4</h4>
-                <div><a class="text-white" href="#">Menü 1</a></div>
-                <div><a class="text-white" href="#">Menü 2</a></div>
-                <div><a class="text-white" href="#">Menü 3</a></div>
-                <div><a class="text-white" href="#">Menü 4</a></div>
-            </div>
-        </div>
-    </div>
+<footer class="text-center">
+    <p class="mb-0">&copy; 2024 BODY AI | Tüm hakları saklıdır.</p>
 </footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 </html>
