@@ -58,7 +58,7 @@ ROOT_URLCONF = 'spor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # templates klasörü eklendi
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
