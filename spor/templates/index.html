@@ -9,31 +9,51 @@ Ana Sayfa
     <div class="row justify-content-center">
         <div class="col-md-8">
             <!-- Kullanıcıdan bilgi almak için form -->
-            <div class="form-container p-4 rounded shadow" style="background-color: #121212; border-radius: 20px; box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);" id="form-container">
-                <h4 class="text-center" style="color: #ff7f50; margin-bottom: 20px;">Bilgilerinizi Girin</h4>
+            <div class="form-container p-4 rounded shadow" id="form-container" style="background: linear-gradient(135deg, #151716, #282928);">
+                <h4 class="text-center" style="color: #fff; margin-bottom: 20px;">Bilgilerinizi Girin</h4>
                 <form method="POST" onsubmit="return false;">
                     {% csrf_token %}
                     <div class="form-group">
-                        <input type="text" name="ad" placeholder="Ad" class="custom-input" required>
-                        <input type="text" name="soyad" placeholder="Soyad" class="custom-input" required>
-                        <input type="date" name="dogum_tarihi" placeholder="Doğum Tarihi" class="custom-input" required>
-                        <input type="number" name="vucut_agirligi" placeholder="Vücut Ağırlığı (kg)" class="custom-input" required>
-                        <input type="number" name="boy_uzunlugu" placeholder="Boy Uzunluğu (cm)" class="custom-input" required>
-                        <input type="number" name="aylik_kayit" placeholder="Kaç Aylık Yazılmak İstiyorsunuz?" class="custom-input" required>
+                        <label for="id_ad" style="color: #fff;">Ad:</label>
+                        <input type="text" id="id_ad" name="ad" class="form-control" style="border-radius: 15px; background-color: #2a2a2a; color: #fff; transition: all 0.3s;"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_soyad" style="color: #fff;">Soyad:</label>
+                        <input type="text" id="id_soyad" name="soyad" class="form-control" style="border-radius: 15px; background-color: #2a2a2a; color: #fff; transition: all 0.3s;"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_dogum_tarihi" style="color: #fff;">Yaş:</label>
+                        <input type="number" id="id_dogum_tarihi" name="dogum_tarihi" class="form-control" style="border-radius: 15px; background-color: #2a2a2a; color: #fff; transition: all 0.3s;"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_kilo" style="color: #fff;">Vücut Ağırlığı:</label>
+                        <input type="number" id="id_kilo" name="kilo" class="form-control" style="border-radius: 15px; background-color: #2a2a2a; color: #fff; transition: all 0.3s;"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_boyUzunlugu" style="color: #fff;">Boy Uzunluğu:</label>
+                        <input type="number" id="id_boyUzunlugu" name="boyUzunlugu" class="form-control" style="border-radius: 15px; background-color: #2a2a2a; color: #fff; transition: all 0.3s;"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_kacAylik" style="color: #fff;">Kaç aylık yazılmak istiyorsunuz?</label>
+                        <input type="number" id="id_kacAylik" name="kacAylik" class="form-control" style="border-radius: 15px; background-color: #2a2a2a; color: #fff; transition: all 0.3s;"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_ekstra_aciklama" style="color: #fff;">Eklemek istedikleriniz:</label>
+                        <textarea id="id_ekstra_aciklama" name="ekstra_aciklama" class="form-control" rows="3" style="border-radius: 15px; background-color: #2a2a2a; color: #fff; transition: all 0.3s;"></textarea>
                     </div>
                     <button type="submit" class="btn btn-block" style="background-color: #ff7f50; color: #fff; border-radius: 25px; padding: 10px; transition: background-color 0.3s; font-weight: bold;" id="submit-btn">Gönder</button>
                 </form>
             </div>
 
             <!-- Chatbox görünürlüğü -->
-            <div class="chat-container mt-4 rounded shadow" style="background-color: #121212; border-radius: 20px; box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5); display: none;" id="chatbox-container">
+            <div class="chat-container mt-4 rounded shadow" style="background-color: #121212; border-radius: 15px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); display: none;" id="chatbox-container">
                 <div class="card-body">
                     <h5 class="card-title text-center" style="color: #ffab40; margin-bottom: 20px;">Soru Sor</h5>
                     <div id="loading-message" style="color: #ffab40; text-align: center; display: none; margin-bottom: 10px;">
                         <p>Size uygun fitness programı hazırlanıyor...</p>
                         <div class="loader"></div>
                     </div>
-                    <div id="chatbox" class="border p-3 mb-3 rounded" style="height: 300px; overflow-y: auto; background-color: #1e1e1e; color: #e0e0e0; border-radius: 20px; margin-bottom: 20px;">
+                    <div id="chatbox" class="border p-3 mb-3 rounded" style="height: 300px; overflow-y: auto; background-color: #1e1e1e; color: #e0e0e0; border-radius: 15px; margin-bottom: 20px;">
                         <!-- Chat messages will appear here -->
                     </div>
                     <div class="input-group">
@@ -45,6 +65,23 @@ Ana Sayfa
         </div>
     </div>
 </div>
+
+<style>
+    .loader {
+        border: 8px solid #f3f3f3; /* Açık gri */
+        border-top: 8px solid #ff7f50; /* Turuncu */
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite; /* Dönme animasyonu */
+        margin: 10px auto; /* Ortalamak için */
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 
 <!-- Chatbox için JS -->
 <script>
@@ -100,68 +137,17 @@ Ana Sayfa
             if (userMessage.trim() === '') return;
 
             // Kullanıcı mesajını gösterme
-            const userBubble = document.createElement('div');
-            userBubble.innerHTML = `<strong style="color: #ffab40;">Ben:</strong> ${userMessage}`;
-            userBubble.style.marginBottom = '10px';
-            userBubble.style.backgroundColor = '#ff7f50';
-            userBubble.style.color = '#fff';
-            userBubble.style.borderRadius = '15px';
-            userBubble.style.padding = '10px';
-            userBubble.style.textAlign = 'left';
-            chatbox.appendChild(userBubble);
-            userInput.value = '';
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.innerHTML = `<strong>Kullanıcı:</strong> ${userMessage}`;
+            userMessageDiv.style.marginBottom = '10px';
+            userMessageDiv.style.color = '#e0e0e0';
+            userMessageDiv.style.textAlign = 'left';
+            chatbox.appendChild(userMessageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
 
-            // Bot cevabını simüle etme
-            setTimeout(() => {
-                const botBubble = document.createElement('div');
-                botBubble.innerHTML = `<strong style="color: #ffab40;">BODY AI:</strong> Bu bir örnek cevap.`;
-                botBubble.style.marginBottom = '10px';
-                botBubble.style.backgroundColor = '#333';
-                botBubble.style.color = '#e0e0e0';
-                botBubble.style.borderRadius = '15px';
-                botBubble.style.padding = '10px';
-                botBubble.style.textAlign = 'left';
-                chatbox.appendChild(botBubble);
-                chatbox.scrollTop = chatbox.scrollHeight;
-            }, 1000);
+            // Kullanıcı giriş kutusunu temizle
+            userInput.value = '';
         });
     }
 </script>
-
-<!-- Kum Saati CSS Animasyonu -->
-<style>
-    .loader {
-        border: 8px solid #f3f3f3;
-        border-top: 8px solid #ff7f50;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        animation: spin 1s linear infinite;
-        margin: 10px auto;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    /* Yeni stil tanımları */
-    .custom-input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: none;
-        border-radius: 15px;
-        background-color: #2a2a2a;
-        color: #fff;
-        transition: border 0.3s, box-shadow 0.3s;
-    }
-
-    .custom-input:focus {
-        outline: none;
-        border: 1px solid #ff7f50;
-        box-shadow: 0 0 5px rgba(255, 127, 80, 0.5);
-    }
-</style>
 {% endblock %}
- ## 5.2. Hakkımızda Sayfası
