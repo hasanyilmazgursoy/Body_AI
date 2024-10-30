@@ -1,8 +1,7 @@
 from django.contrib import admin
-from .models import Sporcu  # Model adı büyük harfle güncellendi
+from .models import Sporcu
 
 class SporcuAdmin(admin.ModelAdmin):
-    list_display = ['ad', 'soyad', 'dogum_tarihi', 'kilo', 'boyUzunlugu', 'kacAylik', 'ekstra_aciklama']  # ekstra_aciklama eklendi
-    search_fields = ['ad', 'soyad']
+    list_display = ('id', 'ad', 'soyad', 'dogum_tarihi', 'kilo', 'boyUzunlugu', 'kacAylik')  # 'boy' yerine 'boyUzunlugu' kullanıldı
 
 admin.site.register(Sporcu, SporcuAdmin)

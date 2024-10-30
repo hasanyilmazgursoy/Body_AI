@@ -1,25 +1,23 @@
-# views.py
 from django.shortcuts import render, redirect
-from .models import Sporcu
 from .forms import SporcuForm
-
+from .models import Sporcu
 
 def anasayfa(request):
-    form = SporcuForm()
     chatbox_visible = False
+    form = SporcuForm()  # İlk yüklemede boş form
 
     if request.method == 'POST':
         form = SporcuForm(request.POST)
         if form.is_valid():
-            form.save()
-            chatbox_visible = True  # Chatbox görünür
+            sporcu = form.save()  # Sporcu modeline göre kaydediyoruz
+            chatbox_visible = True  # Chatbox'ı görünür yap
+            form = SporcuForm()  # Formu sıfırlamak için yeni bir form oluştur
 
     context = {
         'form': form,
-        'chatbox_visible': chatbox_visible
+        'chatbox_visible': chatbox_visible,
     }
     return render(request, 'index.html', context)
 
-
 def hakkimizda(request):
-    return render(request, 'hakkimizda.html')  # 'hakkimizda.html' yerine ilgili şablon dosyanızın adını yazın
+    return render(request, 'hakkimizda.html')
